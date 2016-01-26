@@ -1,0 +1,33 @@
+{
+  "name": "electron-node-pre-gyp-fix",
+  "version": "0.1.0",
+  "description": "Monkey patches node-pre-gyp to make it work with Electron.",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enlight/electron-node-pre-gyp-fix.git"
+  },
+  "keywords": [
+    "electron",
+    "node-pre-gyp"
+  ],
+  "author": "Vadim Macagon <vadim.macagon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enlight/electron-node-pre-gyp-fix/issues"
+  },
+  "homepage": "https://github.com/enlight/electron-node-pre-gyp-fix#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.5",
+    "electron-rebuild": "^1.1.2"
+  },
+  "dependencies": {
+    "node-inspector": "^0.12.5"
+  }
+}
