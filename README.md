@@ -19,23 +19,21 @@ Install the package:
 npm install enlight/electron-node-pre-gyp-fix --save
 ```
 
-Then install the fix before requiring any modules with native dependencies:
+Then install the fix before requiring `node-pre-gyp` or any modules that require it:
 ```javascript
 require('electron-node-pre-gyp-fix').install();
 ```
+The fix must be installed once in every Electron process, and should be done as early as possible
+during the initializion of a process.
 
 ## How it works
 
-When the `install()` function is invoked it replaces the existing function in
-`require.extensions['.js']` that's responsible for loading `.js` files with one that
-monkey-patches the `evaluate()` function exported from `node-pre-gyp/lib/util/versioning.js`.
+When the `install()` function is invoked it monkey-patches `Module.prototype._compile()` so that
+when `node-pre-gyp/lib/util/versioning.js` is compiled the `evaluate()` function that's exported
+by that module is monkey-patched to do the right thing when invoked within an Electron process.
 Note that it doesn't matter how many copies of `node-pre-gyp` are installed in your `node_modules`
-tree, any `node-pre-gyp` that gets loaded after `install()` is invoked will get patched.
-
-## Limitations
-
-This package may be incompatible with [electron-compile](https://github.com/electronjs/electron-compile)
-because it modifies `require.extensions`.
+tree, all instances of the `evaluate()` function will be monkey-patched at runtime
+provided `install()` is called before requiring `node-pre-gyp`.
 
 ## License
 MIT
