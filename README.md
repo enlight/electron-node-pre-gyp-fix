@@ -1,5 +1,9 @@
 # electron-node-pre-gyp-fix
 
+**NOTE**: I strongly recommend using the `node-pre-gyp` workaround in
+[electron-rebuild](https://github.com/electronjs/electron-rebuild) instead, as the monkey-patching
+this module performs doesn't appear to work with `node-inspector`.
+
 ## Overview
 [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) is used by some NPM packages with native
 depedencies (e.g. `sqlite3`, `node-inspector`) to save end-users the trouble of compiling those
